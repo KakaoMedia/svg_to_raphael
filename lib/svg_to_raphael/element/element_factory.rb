@@ -1,36 +1,37 @@
 module SvgToRaphael
   module Element
 
-    class Paper
+    class ElementFactory
+
+      # include SvgToRaphael::Element
 
       def initialize(parsed_svg)
         @circles = prepare_element(parsed_svg.css('circle'), :circle)
         @ellipses = prepare_element(parsed_svg.css('ellipse'), :ellipse)
         @paths = prepare_element(parsed_svg.css('path'), :path)
-        @polygons = prepare_element(parsed_svg.css('polygon'), :polygon)
-        @rects = prepare_element(parsed_svg.css('rect'), :rect)
+        # @polygons = prepare_element(parsed_svg.css('polygon'), :polygon)
+        @rects = prepare_element(parsed_svg.css('rect'), :rectangule)
       end
 
       def get_paper_elements
-        paper = @ellipses.join(" ")
+        paper = @circles.join(" ")
+        paper << @ellipses.join(" ")
         paper << @paths.join(" ")
-        paper << @polygons.join(" ")
+        # paper << @polygons.join(" ")
         paper << @rects.join(" ")
-        paper << @groups.join(" ")
-        paper << @circles.join(" ")
-      end
 
+      end
 
       protected
 
       def prepare_element(parsed_data, type)
         elements = []
         parsed_data.size.times do |i|
-          element = new_element(i, parsed_data[i], type)
+          element = Element.new_element(i, parsed_data[i], type)
           elements << element.draw
         end
+        elements
       end
-
 
     end
 

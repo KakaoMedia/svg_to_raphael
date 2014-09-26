@@ -2,7 +2,7 @@ module SvgToRaphael
 
   class Parser
 
-    include Element
+    include SvgToRaphael::Element
 
     def initialize(path)
       @path = path
@@ -14,7 +14,7 @@ module SvgToRaphael
     end
 
     def get_raphael
-      Paper.new(document).get_paper_elements
+      header + elements
     end
 
   end

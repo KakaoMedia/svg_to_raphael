@@ -1,6 +1,7 @@
 module SvgToRaphael
   module Element
-    class Circle
+
+    class Rectangle
 
       def initialize(name, data)
         @name = name
@@ -14,11 +15,12 @@ module SvgToRaphael
       protected
 
       def element_base
-        cx = @data.attributes["cx"].value
-        cy = @data.attributes["cy"].value
-        round = @data.attributes["r"].value
+        x = @data.attributes["x"].value
+        y = @data.attributes["y"].value
+        width = @data.attributes["width"].value
+        height = @data.attributes["height"].value
 
-        "var #{@name} = #{SvgToRaphael::PAPER_NAME}.circle(#{cx}, #{cy}, #{round});"
+        "var #{@name} = #{SvgToRaphael::PAPER_NAME}.rect(#{x}, #{y}, #{width}, #{height});"
       end
 
       def element_attributes
@@ -26,5 +28,6 @@ module SvgToRaphael
       end
 
     end
+
   end
 end
