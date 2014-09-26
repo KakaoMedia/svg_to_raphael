@@ -18,7 +18,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    converter = SvgToRaphael::Parser.new('/path/to/svgfile.svg')
+    raphael_paper = converter.get_raphael
+    #=> "var paper = Raphael('paper', '500', '500'); var circle0 = paper.circle(231.572, 84.708, 54.038);...
+
+## Todo
+
+* Support to Polygon elements (convert polygon elements to paths)
 
 ## Contributing
 
