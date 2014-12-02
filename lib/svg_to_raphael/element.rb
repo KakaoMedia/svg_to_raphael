@@ -69,7 +69,15 @@ module SvgToRaphael
     end
 
     def elements
-      ElementFactory.new(document).get_paper_elements
+      element_factory.get_paper_elements
+    end
+
+    def element_names
+      element_factory.get_element_names
+    end
+
+    def element_factory
+      ElementFactory.new(document)
     end
 
   end

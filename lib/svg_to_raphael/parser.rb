@@ -17,6 +17,12 @@ module SvgToRaphael
       header + elements
     end
 
+    # This method returns an array of all elements by the raphael generator
+
+    def get_elements_array
+      element_names
+    end
+
   end
 
 end

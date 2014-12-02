@@ -2,6 +2,8 @@ module SvgToRaphael
   module Element
     class Path
 
+      attr_reader :name
+
       def initialize(name, data)
         @name = name
         @data = data
