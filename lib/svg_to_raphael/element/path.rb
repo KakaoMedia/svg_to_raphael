@@ -22,10 +22,13 @@ module SvgToRaphael
       end
 
       def element_attributes
-        attributes = Element.get_path_attributes(@data.attributes['style'].value)
+
+        style = @data.attributes['style']
+
+        attributes = style.nil? ? Element.get_attributes_content(@data) : Element.get_path_attributes(@data.attributes['style'].value)
+
         "#{@name}.attr({ #{attributes}}).data('id', '#{@name}');"
       end
-
 
     end
   end
